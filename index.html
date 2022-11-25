@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+     <style type="text/css">
+        .player{
+            height: 300px;
+            width: 200px;
+
+            background-image:url(https://cdn.discordapp.com/attachments/1044620096942903369/1045589983978868746/less.png) ;
+            background-size:100% 100% ;
+        }
+        .diamond{
+            height: 100px;
+            width: 100px;
+            
+/*            transition: 1s;*/
+        }
+        .positionA{
+            position: absolute;
+        }
+        .myfont{
+            font-family:Ubuntu Condensed;
+
+        }
+        .btnLeft{
+            width: 500px;
+            height: 100px;
+
+        }
+        .btnRight{
+             width: 500px;
+            height: 100px;
+
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div style="pink ;width:1500px ;height: 900px;">
+        <img style= "width: 1500px; height: 900px;" src="https://cdn.discordapp.com/attachments/1044620096942903369/1045568668702089268/les.png">
+    </div>
+
+    <img src="https://cdn.discordapp.com/attachments/1044620096942903369/1045277164104323093/1.png" style="position: absolute;left:180px; top:60px;width: 50px;height: 50px;" alt="textAlt" class="diamond">
+    <img src="https://cdn.discordapp.com/attachments/1044620096942903369/1045277164104323093/1.png" style="position: absolute;left:380px; top:250px;width: 50px;height: 50px;"alt="textAlt" class="diamond">
+    <img src="https://cdn.discordapp.com/attachments/1044620096942903369/1045277164104323093/1.png" style="position: absolute;left:580px; top:60px;width: 50px;height: 50px;"alt="textAlt" class="diamond">
+    <img src="https://cdn.discordapp.com/attachments/1044620096942903369/1045277164104323093/1.png" style="position: absolute;left:780px; top:20px;width: 50px;height: 50px;"alt="textAlt" class="diamond">
+    <img src="https://cdn.discordapp.com/attachments/1044620096942903369/1045277164104323093/1.png" style="position: absolute;left:980px; top:60px;width: 50px;height: 50px;"alt="textAlt" class="diamond">
+
+    <div class="TextClaud positionA" style="height: 300px; width: 540px; top: 335px; left: -30px; background-image: url(https://cdn.discordapp.com/attachments/1044620096942903369/1045272177009766430/46aa759c2413ef88.png); background-size: 100% 100%;">
+        <p class="TextClaud_text" style="top: 200px; left: 50px"> text here </p>
+    </div>
+
+    <p style="position: absolute; left: 580px; top: 650px;font-size:30px ;" class="score myfont">0</p>
+    <div class="player positionA" style="top: 600px; left: 200px;">
+        
+    </div>
+
+   <div>
+       <a href="index.html"><img  src="https://cdn.discordapp.com/attachments/1044620096942903369/1045638301211688991/1586716069c492ee.png" style="position: absolute;left:1310px; top:0px;width: 200px;height: 200px;" alt="textAlt" class="diamond">
+       </a>
+        <a href="karta.html"><img style="position: absolute;left:0px; top:0px;width: 200px;height: 150px;" alt="textAlt";  src="
+            https://cdn.discordapp.com/attachments/1044620096942903369/1045640822542045234/14ee5a7725324ae4.png"> 
+       </a>
+   </div>
+    
+    <button class="btnLeft">left</button>
+    <button class="btnRight">right</button>
+    <div class="WinnerText" style="height: 250px; width: 250px;  position: absolute; left: 300px; top: 150px; display: none;">
+               <a href="next.html"><img style="position: absolute;left:200px; top:100px;height: 50px;" alt="textAlt";  src="https://cdn.discordapp.com/attachments/1044620096942903369/1045658945550823424/2dd902e3b2873b0f.png
+            "> 
+       </a>
+    
+    </div>
+    <script type="text/javascript">
+        let player = document.querySelector(".player");//нашли игрока
+        let btnLeft= document.querySelector(".btnLeft");
+        let btnRight= document.querySelector(".btnRight");
+        let WinnerText = document.querySelector(".WinnerText");
+        let Score = document.querySelector(".score");
+        let diamonds = document.querySelectorAll(".diamond");
+        let TextClaud_text = document.querySelector(".TextClaud_text");
+        let TextClaud = document.querySelector(".TextClaud");
+        let playerTop=100;
+        let playerLeft1=200;
+        let playerLeft2=400;
+        
+        let diamondTop = [60, 40, 60, 20, 60];
+        let diamondLeft = [180, 380, 580, 780, 980];
+
+        let score = 0;
+
+        let left = 0;
+        //let top = 200;
+        btnLeft.onclick=function(){
+            playerLeft1=playerLeft1-50;
+            player.style.left=playerLeft1+"px";
+            playerLeft2 = playerLeft2 -50;
+        }
+        btnRight.onclick=function(){
+            playerLeft1=playerLeft1+50;
+            player.style.left=playerLeft1+"px";
+            playerLeft2 = playerLeft2 +50;
+        }
+
+        for(let i = 0; i<diamonds.length;i++){
+            diamonds[i].onclick = function(){
+                diamonds[i].style.display = "none"; 
+                score = score+1;
+                Score.innerHTML = score;
+                
+                if (score == 1){
+                    TextClaud_text.innerHTML = "ура!";
+                }else if(score == 2){
+                    TextClaud_text.innerHTML = "ещё один!";
+                }else if(score == 3){
+                    TextClaud_text.innerHTML = "!!!";
+                }else if(score == 4){
+                    TextClaud_text.innerHTML = "ура ура ура";
+                }else if(score == 5){
+                    TextClaud_text.innerHTML = "урааа";
+                }else if(score == 6){
+                    TextClaud_text.innerHTML = "ещё чуть-чуть!";
+                }else if(score == 7){
+                    TextClaud_text.innerHTML = "урааааааа";
+                }else if(score == 8){
+                    TextClaud_text.innerHTML = "ещё!";
+                }else if(score == 9){
+                    TextClaud_text.innerHTML = "ииии..";
+
+                }
+                if (score == 10){
+                    alert("win");
+                }
+            }
+        }
+        
+        let indexOfDiamonds = 0;
+        let random = Math.round(Math.random() *5);
+        let StartFoling = function(){
+            diamondTop[indexOfDiamonds] = diamondTop[indexOfDiamonds] + 1;
+            diamonds[indexOfDiamonds].style.top = diamondTop[indexOfDiamonds] + "px";
+
+            if(diamondTop[indexOfDiamonds] > 600 && diamondTop[indexOfDiamonds] < 800){
+                if(diamondLeft[indexOfDiamonds] > playerLeft1 && diamondLeft[indexOfDiamonds] < playerLeft2){
+                    diamonds[indexOfDiamonds].style.display = "none";
+                    indexOfDiamonds++;
+                    score = score+1;
+                    Score.innerHTML = score;
+                    if(score == 5)
+                    {
+                        WinnerText.style.display = "block";
+                    }
+                }
+            } 
+        }
+        let interval1 = setInterval(StartFoling, 10);
+    </script>
+</body>
+</html>
